@@ -2,6 +2,11 @@
 mariadb docker image for arm32v7
 Base Docker file from: https://github.com/MariaDB/mariadb-docker/blob/8be7abacca5f19d487b137c7d8f9516d07116109/10.5/Dockerfile
 
+# Still available and maintained images:
+- https://hub.docker.com/r/arm32v7/adoptopenjdk
+- https://hub.docker.com/r/arm32v7/maven
+- https://hub.docker.com/r/arm32v7/golang
+
 # Example for multi arch build
 - see Workflow file for details: https://github.com/wlanboy/mariadb-arm32v7/blob/main/.github/workflows/docker-publish.yml
 - create env vars
