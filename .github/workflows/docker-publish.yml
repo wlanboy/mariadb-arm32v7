@@ -20,7 +20,7 @@ jobs:
         DOCKER_IMAGE=wlanboy/mariadb-arm32v7
         sudo apt update
         sudo apt install -y qemu qemu-user-static qemu-user binfmt-support
-        run --rm --privileged multiarch/qemu-user-static:register --reset
+        docker run --rm --privileged multiarch/qemu-user-static:register --reset
 
     - name: Publish to Registry
       env:
