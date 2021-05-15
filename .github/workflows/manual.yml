@@ -23,6 +23,7 @@ jobs:
         DOCKER_IMAGE=wlanboy/mariadb-arm32v7
         sudo apt update
         sudo apt install -y qemu qemu-user-static qemu-user binfmt-support
+        update-binfmts --enable qemu-arm
         cp /usr/bin/qemu-arm-static .
         docker run --rm --privileged multiarch/qemu-user-static:register --reset
     - name: Docker login
