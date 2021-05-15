@@ -1,5 +1,7 @@
 FROM arm32v7/ubuntu:20.04
 
+COPY qemu-arm-static /usr/bin/qemu-arm-static
+
 RUN groupadd -r mysql && useradd -r -g mysql mysql
 
 RUN set -ex; \
