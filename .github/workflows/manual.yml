@@ -1,0 +1,37 @@
+name: Docker build and publish image
+
+on:
+  workflow_dispatch:
+    inputs:
+      location:
+        description: 'publish'
+        required: false
+        default: 'true'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      
+    - name: Check out code into the directory
+      uses: actions/checkout@v2
+      
+    - name: Prepare
+      id: prep
+      run: |
+        DOCKER_IMAGE=wlanboy/mariadb-arm32v7
+        sudo apt update
+        sudo apt install -y qemu qemu-user-static qemu-user binfmt-support
+        cp /usr/bin/qemu-arm-static .
+        docker run --rm --privileged multiarch/qemu-user-static:register --reset
+    - name: Publish to Registry
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+    - name: Build the Docker image
+      run: docker build -t wlanboy/mariadb-arm32v7:latest .
+    - name: Docker Push
+      run: docker push wlanboy/mariadb-arm32v7:latest
