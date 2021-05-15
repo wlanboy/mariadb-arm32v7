@@ -1,0 +1,26 @@
+
+name: Docker build and publish image
+on: 
+  push:
+    tags: 
+      - '*d'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+
+    - name: Publish to Registry
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+    - name: Build the Docker image
+      run: docker build -t wlanboy/mariadb-arm32v7:latest .
+    - name: Docker Push
+      run: docker push wlanboy/mariadb-arm32v7:latest
