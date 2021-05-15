@@ -59,7 +59,6 @@ RUN set -ex; \
 	apt-key list
 
 ENV MARIADB_MAJOR 10.6
-ENV MARIADB_VERSION 1:10.6.0+maria~focal
 
 RUN set -e;\
 	echo "deb https://ftp.osuosl.org/pub/mariadb/repo/$MARIADB_MAJOR/ubuntu focal main" > /etc/apt/sources.list.d/mariadb.list; \
@@ -75,7 +74,7 @@ RUN set -ex; \
 	} | debconf-set-selections; \
 	apt-get update; \
 	apt-get install -y \
-		"mariadb-server=$MARIADB_VERSION" \
+		mariadb-server \
 		mariadb-backup \
 		socat \
 	; \
