@@ -20,7 +20,6 @@ jobs:
         DOCKER_IMAGE=wlanboy/mariadb-arm32v7
         sudo apt update
         sudo apt install -y qemu qemu-user-static qemu-user binfmt-support
-        chmod 777 /opt/vsts/work/1/s/go-webapp-arm/qemu-arm-static
         run --rm --privileged multiarch/qemu-user-static:register --reset
 
     - name: Publish to Registry
