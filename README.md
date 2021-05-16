@@ -15,6 +15,16 @@ Base Docker file from: https://github.com/MariaDB/mariadb-docker/blob/8be7abacca
 - build docker image for arm32v7
 - publish docker image
 
+# Run container
+```
+docker run --name mariadbarm -p 3306:3306 -e MYSQL_ROOT_PASSWORD=test -e MYSQL_DATABASE=test -e MYSQL_USER=test -e MYSQL_PASSWORD=test -d --restart unless-stopped --platform linux/arm/v7 -t wlanboy/mariadb-arm32v7:latest
+```
+
+# Connect to mariadb instance
+```
+mysql -h 127.0.0.1 -P 3306 -u test -ptest test
+```
+
 # docker hub
 - https://hub.docker.com/repository/docker/wlanboy/mariadb-arm32v7
 
