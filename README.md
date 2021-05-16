@@ -26,7 +26,7 @@ mysql -h 127.0.0.1 -P 3306 -u test -ptest test
 ```
 
 # docker hub
-- https://hub.docker.com/repository/docker/wlanboy/mariadb-arm32v7
+- https://hub.docker.com/r/wlanboy/mariadb-arm32v7
 
 # Run arm based docker images with X86 CPUs
 - sudo apt-get install qemu binfmt-support qemu-user-static 
